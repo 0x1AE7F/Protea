@@ -1,4 +1,4 @@
-![Logo_Banner](https://user-images.githubusercontent.com/55046135/218058811-4250b134-bed3-474d-85d8-d6ee8819d30a.png)
+![Logo_Banner](https://user-images.githubusercontent.com/55046135/218131434-dec16548-82e5-465a-b6f0-bce81aa65391.png)
 
 
 # Welcome to Protea!
