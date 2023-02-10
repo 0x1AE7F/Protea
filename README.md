@@ -16,6 +16,13 @@
 - Time tables
 - Assignments & Tasks
 
+## Setup
+
+1. Clone the repo
+2. Change `.env.example` to `.env` and enter your SupaBase api keys.
+  - You can either selfhost it or get a free instance at https://supabase.com/
+
+
 ## Developing
 
 Run `npm install` (or `pnpm install` or `yarn`), to install all dependencies
