@@ -17,4 +17,5 @@
 - Assignments & Tasks
 
 
-#### Protea is licensed under the MIT license
+#### Protea is licensed under the MIT license.
+#### More informations can be found in the [LICENSE](LICENSE) file
