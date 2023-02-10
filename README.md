@@ -1,22 +1,24 @@
-# create-svelte
+![Logo_Banner](https://user-images.githubusercontent.com/55046135/218131434-dec16548-82e5-465a-b6f0-bce81aa65391.png)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-## Creating a project
+# Welcome to Protea!
 
-If you're seeing this, you've probably already done this step. Congrats!
+### This is a "all-in-one" ( not yet ) platform for Schools.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+#### This "platform" is still a work in progress and we DO NOT accept any issues or PRs ( yet )
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+### Some of the planned features are:
+
+- E-Mailing
+- Video conferencing
+- Calendars
+- File storage
+- Time tables
+- Assignments & Tasks
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Run `npm install` (or `pnpm install` or `yarn`), to install all dependencies
 
 ```bash
 npm run dev
@@ -27,12 +29,14 @@ npm run dev -- --open
 
 ## Building
 
-To create a production version of your app:
+To create a production version of protea: ( UNTESTED )
 
 ```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+#### Protea is licensed under the MIT license.
+#### More informations can be found in the [LICENSE](LICENSE) file
+#### Icons from Tabler-Icons by Paweł Kuna
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
