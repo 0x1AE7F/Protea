@@ -3,11 +3,11 @@
 
 # Welcome to Protea!
 
-## This is a "all-in-one" ( not yet ) platform for Schools.
+### This is a "all-in-one" ( not yet ) platform for Schools.
 
-### This "platform" is still a work in progress and we DO NOT accept any issues or PRs ( yet )
+#### This "platform" is still a work in progress and we DO NOT accept any issues or PRs ( yet )
 
-## Some of the planned features are:
+### Some of the planned features are:
 
 - E-Mailing
 - Video conferencing
@@ -17,4 +17,4 @@
 - Assignments & Tasks
 
 
-### Protea is licensed under the MIT license
+#### Protea is licensed under the MIT license
