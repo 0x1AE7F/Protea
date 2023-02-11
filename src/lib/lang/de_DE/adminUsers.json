@@ -1,0 +1,15 @@
+{
+	"create_new_user": "Neues Konto erstellen",
+	"modal_title_edit_account": "Konto bearbeiten",
+
+	"datatable": {
+		"search": "Suche...",
+		"show": "Zeige",
+		"entries": "Einträge",
+		"filter": "Filter",
+		"rowCount": "Zeige Einträge {start} bis {end} von {total}",
+		"noRows": "Keine Einträge gefunden",
+		"previous": "Vorherige",
+		"next": "Nächste"
+	}
+}

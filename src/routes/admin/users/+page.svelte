@@ -1,55 +1,52 @@
 <script lang="ts">
 	import { env } from '$env/dynamic/public';
-	import exampleTableData from '$lib/example-table-data';
 	import {
 		modalStore,
 		type ModalComponent,
 		type ModalSettings,
 		Modal
 	} from '@skeletonlabs/skeleton';
+
+	import translations from '$lib/lang/en_US/adminUsers.json';
+
 	import { DataHandler, Datatable, Th, ThFilter } from '@vincjo/datatables';
 	import UserManagementForm from './UserManagementForm.svelte';
 
-	// Creating a new datahandler which contains the DataTable translations
-	// and configs
-	const handler = new DataHandler(exampleTableData, {
-		rowsPerPage: 10,
-		i18n: {
-			search: 'Suche...',
-			show: 'Zeige',
-			entries: 'Einträge',
-			filter: 'Filter',
-			rowCount: 'Zeige Einträge {start} bis {end} von {total}',
-			noRows: 'Keine Einträge gefunden',
-			previous: 'Vorherige',
-			next: 'Nächste'
-		}
-	});
-	//const rows = handler.getRows();
-
 	// +page.server.ts load function will feed the prefetched data into the variable below
 	export let data: object;
+
+	// Creating a new datahandler which contains the DataTable translations
+	// and configs
+	const handler = new DataHandler(data.users, {
+		rowsPerPage: 10,
+		i18n: translations.datatable
+	});
 
 	console.log(data);
 
 	// This function creates a modal which allows the user to edit the given profile
 	// This function will get called when
 	// a person presses on the 'new button' or on the cog icon next to the user
-	function createUserManagementModal(editingUser: boolean, name: string, username: string): void {
-		console.log('ModalOpen!');
+	function createUserManagementModal(
+		editingUser: boolean,
+		name: string,
+		username: string,
+		userID: string
+	): void {
 		const c: ModalComponent = { ref: UserManagementForm };
 		const d: ModalSettings = {
 			type: 'component',
-			title: editingUser ? 'Konto bearbeiten' : 'Neues Konto erstellen',
+			title: editingUser ? translations.modal_title_edit_account : translations.create_new_user,
 			body: '',
 			component: c,
-			response: (r: any) => {
-				if (r) console.log('response:', r);
+			response: () => {
+				location.reload();
 			},
 			meta: {
 				editingUser: editingUser,
 				name: name,
-				username: username
+				username: username,
+				userID: userID
 			}
 		};
 		modalStore.trigger(d);
@@ -66,9 +63,9 @@
 			<button
 				class="btn btn-filled-primary"
 				on:click={() => {
-					createUserManagementModal(false, '', '');
+					createUserManagementModal(false, '', '', '');
 				}}
-				>Neuen Benutzer erstellen
+				>{translations.create_new_user}
 				<space />
 				<img src="/icons/user-plus.svg" class="svg-white" alt="User Add Icon" />
 			</button>
@@ -102,7 +99,7 @@
 								<button
 									class="btn"
 									on:click={() => {
-										createUserManagementModal(true, row.full_name, row.username);
+										createUserManagementModal(true, row.full_name, row.username, row.id);
 									}}
 								>
 									<img src="/icons/settings.svg" class="svg-white" alt="Settings" />

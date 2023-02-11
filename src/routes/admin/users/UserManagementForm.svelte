@@ -3,7 +3,7 @@
 	//import { updateUser } from '$lib/supabaseClient';
 	export let parent: any;
 
-	import translations from '$lib/lang/de_DE/userManagementForm.json';
+	import translations from '$lib/lang/en_US/userManagementForm.json';
 
 	import { modalStore } from '@skeletonlabs/skeleton';
 	import { createUser } from '$lib/supabaseClient';
@@ -14,11 +14,16 @@
 	let username = '';
 	let tempPasswd = '';
 	let editingUser = false;
+	let userID = '';
+
+	let wrongUsername = false;
+	let wrongFullName = false;
 
 	if ($modalStore[0]) {
 		name = $modalStore[0].meta?.name;
 		username = $modalStore[0].meta?.username;
 		editingUser = $modalStore[0].meta?.editingUser;
+		userID = $modalStore[0].meta?.userID;
 	}
 
 	if (!editingUser) {
@@ -30,8 +35,15 @@
 			tempPasswd += selection.substring(randnum, randnum + 1);
 		}
 	}
-	// TODO: Add input checking
 	function onFormSubmit(): void {
+		// Checking if username is bigger than one char
+		username.trim().length <= 1 ? (wrongUsername = true) : (wrongUsername = false);
+		username.trim().length <= 1 ? (wrongFullName = true) : (wrongFullName = false);
+
+		if (wrongFullName || wrongUsername) {
+			return;
+		}
+
 		if ($modalStore[0].response)
 			$modalStore[0].response({ name: name, username: username, tempPasswd: tempPasswd });
 		if (!editingUser) {
@@ -46,13 +58,19 @@
 		}
 		modalStore.close();
 	}
+	console.log(userID);
 </script>
 
 <div class="modal-example-form space-y-4">
 	<form class="modal-form border border-surface-500 p-4 space-y-4 rounded-container-token">
 		<label class="input-label">
 			<span>{translations.label_name}</span>
-			<input type="text" bind:value={name} placeholder="{translations.label_name}..." />
+			<input
+				type="text"
+				class="block {wrongFullName ? 'border !border-primary-500 !text-error-500' : ''}"
+				bind:value={name}
+				placeholder="{translations.label_name}..."
+			/>
 		</label>
 
 		<label class="input-label input-group">
@@ -61,12 +79,18 @@
 				<div class="relative mt-1 rounded-md shadow-sm">
 					<input
 						type="text"
-						class="block w-full rounded-md"
+						class="block w-full rounded-md {wrongUsername
+							? 'border !border-primary-500 !text-error-500'
+							: ''}"
 						placeholder="{translations.label_username}..."
 						bind:value={username}
 					/>
 					<div class="absolute inset-y-0 top-2 right-0 flex items-center">
-						<span class="card p-2 pt-3 pb-3 text-surface-300">{env.PUBLIC_EMAIL_DOMAIN}</span>
+						<span
+							class="card p-2 pt-3 pb-3 text-surface-300 {wrongUsername
+								? 'border !border-primary-500 !text-error-500'
+								: ''}">{env.PUBLIC_EMAIL_DOMAIN}</span
+						>
 					</div>
 				</div>
 			</div>
@@ -85,6 +109,9 @@
 				placeholder="{translations.input_hint_temp_password}..."
 			/>
 		</label>
+		{#if editingUser}
+			<p class="!text-xs !text-surface-400">UserID: {userID}</p>
+		{/if}
 	</form>
 	<!-- prettier-ignore -->
 	<footer class="modal-footer {parent.regionFooter}">
