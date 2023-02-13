@@ -1,0 +1,36 @@
+{
+	"admin_user": {
+		"create_new_user": "Create new account",
+		"modal_title_edit_account": "Edit account",
+
+		"datatable": {
+			"search": "Search...",
+			"show": "Showing",
+			"entries": "Entries",
+			"filter": "Filter",
+			"rowCount": "Showing entries {start} to {end} of {total}",
+			"noRows": "No entries found",
+			"previous": "Previous",
+			"next": "Next"
+		}
+	},
+	"login": {
+		"login_prompt": "Please login to continue",
+		"label_username_email": "Username or E-Mail",
+		"label_password": "Password",
+		"btn_login": "Login",
+		"btn_login_loading": "Please wait"
+	},
+	"user_management_form": {
+		"label_name": "Name",
+		"label_username": "Username",
+		"input_hint_temp_password": "Temporary Password",
+		"input_hint_new": "New",
+		"btn_submit": "Save",
+		"btn_cancel": "Cancel"
+	},
+	"user_settings": {
+		"personal_settings_tab": "Personal Informations",
+		"settings_tab": "Settings"
+	}
+}

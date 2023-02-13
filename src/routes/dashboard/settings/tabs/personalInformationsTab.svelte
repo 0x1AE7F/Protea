@@ -1,4 +1,6 @@
 <script lang="ts">
+	// INFO: Wont add translations here as this is just a placeholder!
+
 	import { FileDropzone } from '@skeletonlabs/skeleton';
 	let files: FileList;
 </script>

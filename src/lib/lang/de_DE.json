@@ -1,0 +1,36 @@
+{
+	"admin_user": {
+		"create_new_user": "Neues Konto erstellen",
+		"modal_title_edit_account": "Konto bearbeiten",
+
+		"datatable": {
+			"search": "Suche...",
+			"show": "Zeige",
+			"entries": "Einträge",
+			"filter": "Filter",
+			"rowCount": "Zeige Einträge {start} bis {end} von {total}",
+			"noRows": "Keine Einträge gefunden",
+			"previous": "Vorherige",
+			"next": "Nächste"
+		}
+	},
+	"login": {
+		"login_prompt": "Bitte anmelden um fortzufahren",
+		"label_username_email": "Benutzername oder E-Mail",
+		"label_password": "Passwort",
+		"btn_login": "Anmelden",
+		"btn_login_loading": "Bitte warten"
+	},
+	"user_management_form": {
+		"label_name": "Name",
+		"label_username": "Benutzername",
+		"input_hint_temp_password": "Temporäres Passwort",
+		"input_hint_new": "Neues",
+		"btn_submit": "Speichern",
+		"btn_cancel": "Abbrechen"
+	},
+	"user_settings": {
+		"personal_settings_tab": "Persöhnliche Informationen",
+		"settings_tab": "Einstellungen"
+	}
+}

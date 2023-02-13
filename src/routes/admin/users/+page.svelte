@@ -7,22 +7,19 @@
 		Modal
 	} from '@skeletonlabs/skeleton';
 
-	import translations from '$lib/lang/en_US/adminUsers.json';
-
 	import { DataHandler, Datatable, Th, ThFilter } from '@vincjo/datatables';
 	import UserManagementForm from './UserManagementForm.svelte';
 
 	// +page.server.ts load function will feed the prefetched data into the variable below
+	// TODO: Find some way to stop typescript from crying about object properties
 	export let data: object;
 
 	// Creating a new datahandler which contains the DataTable translations
 	// and configs
 	const handler = new DataHandler(data.users, {
 		rowsPerPage: 10,
-		i18n: translations.datatable
+		i18n: data.translations.admin_user.datatable
 	});
-
-	console.log(data);
 
 	// This function creates a modal which allows the user to edit the given profile
 	// This function will get called when
@@ -36,7 +33,9 @@
 		const c: ModalComponent = { ref: UserManagementForm };
 		const d: ModalSettings = {
 			type: 'component',
-			title: editingUser ? translations.modal_title_edit_account : translations.create_new_user,
+			title: editingUser
+				? data.translations.admin_user.modal_title_edit_account
+				: data.translations.admin_user.create_new_user,
 			body: '',
 			component: c,
 			response: () => {
@@ -65,7 +64,7 @@
 				on:click={() => {
 					createUserManagementModal(false, '', '', '');
 				}}
-				>{translations.create_new_user}
+				>{data.translations.admin_user.create_new_user}
 				<space />
 				<img src="/icons/user-plus.svg" class="svg-white" alt="User Add Icon" />
 			</button>
@@ -94,7 +93,6 @@
 									? env.PUBLIC_EMAIL_DOMAIN
 									: ''}</td
 							>
-							<!-- TODO: Pass userID forward and display it somewhere -->
 							<td>
 								<button
 									class="btn"

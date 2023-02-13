@@ -26,7 +26,7 @@
 					class="btn btn-filled-tertiary btn-base"
 					on:click|once={() => {
 						logOutUser();
-						// TODO: Error popup if login fails
+						// TODO: Error popup if logout fails
 					}}
 				>
 					<img src="/icons/logout.svg" class="" alt="Logout" />

@@ -1,8 +1,0 @@
-{
-	"label_name": "Name",
-	"label_username": "Benutzername",
-	"input_hint_temp_password": "Temporäres Passwort",
-	"input_hint_new": "Neues",
-	"btn_submit": "Speichern",
-	"btn_cancel": "Abbrechen"
-}

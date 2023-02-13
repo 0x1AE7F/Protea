@@ -3,18 +3,18 @@
 	//import { updateUser } from '$lib/supabaseClient';
 	export let parent: any;
 
-	import translations from '$lib/lang/en_US/userManagementForm.json';
-
 	import { modalStore } from '@skeletonlabs/skeleton';
 	import { createUser } from '$lib/supabaseClient';
-
-	// TODO: Add input checking
 
 	let name = '';
 	let username = '';
 	let tempPasswd = '';
 	let editingUser = false;
 	let userID = '';
+
+	// TODO: Find some way to stop typescript from crying about object properties
+
+	export let data: object;
 
 	let wrongUsername = false;
 	let wrongFullName = false;
@@ -58,23 +58,22 @@
 		}
 		modalStore.close();
 	}
-	console.log(userID);
 </script>
 
 <div class="modal-example-form space-y-4">
 	<form class="modal-form border border-surface-500 p-4 space-y-4 rounded-container-token">
 		<label class="input-label">
-			<span>{translations.label_name}</span>
+			<span>{data.translations.user_management_form.label_name}</span>
 			<input
 				type="text"
 				class="block {wrongFullName ? 'border !border-primary-500 !text-error-500' : ''}"
 				bind:value={name}
-				placeholder="{translations.label_name}..."
+				placeholder="{data.translations.user_management_form.label_name}..."
 			/>
 		</label>
 
 		<label class="input-label input-group">
-			<span>{translations.label_username}</span>
+			<span>{data.translations.user_management_form.label_username}</span>
 			<div>
 				<div class="relative mt-1 rounded-md shadow-sm">
 					<input
@@ -82,7 +81,7 @@
 						class="block w-full rounded-md {wrongUsername
 							? 'border !border-primary-500 !text-error-500'
 							: ''}"
-						placeholder="{translations.label_username}..."
+						placeholder="{data.translations.user_management_form.label_username}..."
 						bind:value={username}
 					/>
 					<div class="absolute inset-y-0 top-2 right-0 flex items-center">
@@ -98,15 +97,15 @@
 		<label class="input-label">
 			<span
 				>{#if editingUser}
-					{translations.input_hint_new}
+					{data.translations.user_management_form.input_hint_new}
 				{/if}
-				{translations.input_hint_temp_password}</span
+				{data.translations.user_management_form.input_hint_temp_password}</span
 			>
 			<input
 				class="font-mono"
 				type="text"
 				bind:value={tempPasswd}
-				placeholder="{translations.input_hint_temp_password}..."
+				placeholder="{data.translations.user_management_form.input_hint_temp_password}..."
 			/>
 		</label>
 		{#if editingUser}
@@ -115,7 +114,7 @@
 	</form>
 	<!-- prettier-ignore -->
 	<footer class="modal-footer {parent.regionFooter}">
-        <button class="btn {parent.buttonNeutral}" on:click={parent.onClose}>{translations.btn_cancel}</button>
-        <button class="btn {parent.buttonPositive}" on:click={onFormSubmit}>{translations.btn_submit}</button>
+        <button class="btn {parent.buttonNeutral}" on:click={parent.onClose}>{data.translations.user_management_form.btn_cancel}</button>
+        <button class="btn {parent.buttonPositive}" on:click={onFormSubmit}>{data.translations.user_management_form.btn_submit}</button>
     </footer>
 </div>

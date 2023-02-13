@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { type ConicStop, ConicGradient } from '@skeletonlabs/skeleton';
 
+	// INFO: Wont add translations here as this is just a placeholder!
+
 	const stopsVars: ConicStop[] = [
 		{ label: 'Dateien (256MB)', color: ['red', 500], start: 0, end: 25 },
 		{ label: 'E-Mails (32MB)', color: ['orange', 500], start: 25, end: 57 },

@@ -15,7 +15,9 @@
 	//		};
 	//	});
 	//
-	// TODO: Fix this to work even when supabase itself is not exported
+	// INFO: Fix this to work even when supabase itself is not exported
+	// INFO: This is probably not required anymore
+	// TODO: Find out what this is actually used for
 </script>
 
 <slot />
