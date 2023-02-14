@@ -17,7 +17,7 @@ export async function loginUser(email: string, password: string): Promise<AuthEr
 	return error;
 }
 
-export async function userLoggedIn() {
+export async function getCurrentUserSession() {
 	return await supabase.auth.getSession();
 }
 
@@ -40,8 +40,8 @@ export async function createUser(
 	return error ? false : true;
 }
 
+// FIXME: Profiles are not actually updated
 export async function updateUser(userID: string, data: object): Promise<boolean> {
-	console.log(userID, data);
 	const { error } = await supabase.from('profiles').update(data).match({ id: userID });
 	return error ? false : true;
 }

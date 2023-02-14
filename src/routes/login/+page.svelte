@@ -2,28 +2,25 @@
 	import { goto } from '$app/navigation';
 	import { focusTrap } from '$lib/actions/FocusTrap/focusTrap';
 	import { page } from '$app/stores';
-	import { loginUser, userLoggedIn } from '$lib/supabaseClient';
+	import { getCurrentUserSession, loginUser } from '$lib/supabaseClient';
 
-	// TODO: Rember users choosen lang
-	import translations from '$lib/lang/en_US/login.json';
-
-	userLoggedIn().then((response) => {
+	getCurrentUserSession().then((response) => {
 		if (response.data.session != null) {
 			goto('/dashboard');
 		}
 	});
 
+	// TODO: Find some way to stop typescript from crying about object properties
+
 	let username = '';
 	let password = '';
 	let loading = false;
 	let loginFailed = false;
+	export let data: object;
 
 	function handleLogin() {
 		loading = true;
-		let error;
 		loginUser(username, password).then((error) => {
-			console.log(error);
-			console.log($page.data.session);
 			if (error != null) {
 				loginFailed = true;
 				loading = false;
@@ -45,47 +42,47 @@
 				handleLogin();
 			}}
 		>
-			<h1 class="crumb text-xs sm:text-2xl font-bold">{translations.login_prompt}</h1>
+			<h1 class="crumb text-xs sm:text-2xl font-bold">{data.translations.login.login_prompt}</h1>
 
 			<label>
-				<span>{translations.label_username_email}</span>
+				<span>{data.translations.login.label_username_email}</span>
 				{#if loginFailed}
 					<input
 						type="text"
 						class="border !border-primary-500 !text-error-500"
-						placeholder="{translations.label_username_email}..."
+						placeholder="{data.translations.login.label_username_email}..."
 						bind:value={username}
 					/>
 				{:else}
 					<input
 						type="text"
-						placeholder="{translations.label_username_email}..."
+						placeholder="{data.translations.login.label_username_email}..."
 						bind:value={username}
 					/>
 				{/if}
 			</label>
 			<label>
-				<span>{translations.label_password}</span>
+				<span>{data.translations.login.label_password}</span>
 				{#if loginFailed}
 					<input
 						type="password"
 						class="border !border-primary-500 !text-error-500"
-						placeholder="{translations.label_password}..."
+						placeholder="{data.translations.login.label_password}..."
 						bind:value={password}
 					/>
 				{:else}
 					<input
 						type="password"
-						placeholder="{translations.label_password}..."
+						placeholder="{data.translations.login.label_password}..."
 						bind:value={password}
 					/>
 				{/if}
 			</label>
 			<button class="btn btn-filled-primary" type="submit" disabled={loading}>
 				{#if loading}
-					{translations.btn_login_loading}
+					{data.translations.login.btn_login_loading}
 				{:else}
-					{translations.btn_login}
+					{data.translations.login.btn_login}
 				{/if}
 				<!-- svelte-ignore component-name-lowercase -->
 				<space />
